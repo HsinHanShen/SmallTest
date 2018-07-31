@@ -21,31 +21,39 @@ namespace ConsoleApp_SmallTest
                 Console.WriteLine("=== Small Test App ===");
                 Console.WriteLine("\t 1) print star.");
                 Console.WriteLine("\t 2) xxx test.");
+                Console.WriteLine("\t 3) Add Two Numbers [Linked List].");
                 Console.Write("\t Please select number : ");
 
                 inStr = Console.ReadLine();
                 switch (inStr)
                 {
-                    case "2":
-                        Console.WriteLine("<<< Exercise_{0} start >>>", inStr);
-
-                        Console.WriteLine("====== Exercise end ======");
-                        break;
-                    case "3":
-                        Console.WriteLine("<<< Exercise_{0} start >>>", inStr);
-
-                        Console.WriteLine("====== Exercise end ======");
-                        break;
-                    case "4":
-                        Console.WriteLine("<<< Exercise_{0} start >>>", inStr);
-
-                        Console.WriteLine("====== Exercise end ======");
-                        break;
                     case "1":
                         Console.WriteLine("<<< Exercise_{0} start >>>", inStr);
                         myEx.Ex01_PrintStar();
                         Console.WriteLine("====== Exercise end ======");
                         break;
+                    case "2":
+                        Console.WriteLine("<<< Exercise_{0} start >>>", inStr);
+                        myEx.Ex02_PrintSwap();
+                        Console.WriteLine("====== Exercise end ======");
+                        break;
+                    case "3":
+                        Console.WriteLine("<<< Exercise_{0} start >>>", inStr);
+                        myEx.Ex03_AddTwoNumbers();
+                        Console.WriteLine("====== Exercise end ======");
+                        break;
+                    case "4":
+                        Console.WriteLine("<<< Exercise_{0} start >>>", inStr);
+                        myEx.Ex04_LengthOfLongestSubstring();
+                        Console.WriteLine("====== Exercise end ======");
+                        break;
+                    case "5":
+                        Console.WriteLine("<<< Exercise_{0} start >>>", inStr);
+                        myEx.Ex05_ReverseNumbers();
+                        Console.WriteLine("====== Exercise end ======");
+                        break;
+
+
                 }
 
 
