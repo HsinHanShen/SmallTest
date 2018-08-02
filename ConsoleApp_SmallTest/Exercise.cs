@@ -318,28 +318,123 @@ namespace ConsoleApp_SmallTest
         #region ex06 - Overflow Detection
         public int Ex06_OverflowDetection()
         {
+            Console.WriteLine("< 使用內建函數checked檢查溢位 >");
+            // C# 只走常數運算會透過compiler檢查是否溢位，
+            // 對於變數運算，預設不會檢查!!!
+            // 必須使用"checked()"來進行溢位偵測
             try
             {
-                int A = Int32.MaxValue;
+                int A = Int32.MaxValue - 2;
                 int B = 2;
+                int C = 3;
                 int ans = 0;
-
-                ans = (A + B);
 
                 Console.WriteLine("A = {0}", A);
                 Console.WriteLine("B = {0}", B);
-                Console.WriteLine("A + B = {0}", ans);
+                Console.WriteLine("C = {0}", C);
+                Console.WriteLine("-----------------------------");
+
+                Console.WriteLine("A + B");
+                // ans = A + B;         // 不會發出例外
+                ans = checked(A + B);   // 會檢查例外(溢位)
+                Console.WriteLine("{0} + {1} = {2}", A, B, ans);
+
+                Console.WriteLine("-----------------------------");
+                Console.WriteLine("A + C");
+                // ans = A + C;         // 不會發出例外
+                ans = checked(A + C);   // 會檢查例外(溢位)
+                Console.WriteLine("{0} + {1} = {2}", A, C, ans);
             }
             catch (Exception e)
             {
-                //Console.WriteLine("發生例外狀況 : {0}", e.ToString());
-                Console.WriteLine("發生例外狀況 : {0}", e.Message);
+                Console.WriteLine("發生例外狀況 : {0}", e.ToString());
             }
+            Console.WriteLine("");
+            Console.WriteLine("< 手動檢查 >");
+            // 手動檢查
+            try
+            {
+                int maxInt = 0x7FFFFFFF;
+                int minInt = maxInt + 1;
 
+                
+                int A = 0x7FFFFFF0;
+                int B = 0xF;
+                int C = 0x10;
+                int ans = 0;
+                Console.WriteLine("A = {0}", A);
+                Console.WriteLine("B = {0}", B);
+                Console.WriteLine("C = {0}", C);
+                Console.WriteLine("-----------------------------");
 
+                Console.WriteLine("A + B");
+                ans = A + B;
+                if (A > maxInt - B)
+                    Console.WriteLine("{0} + {1} = Overflow !!!", A , B);
+                else
+                    Console.WriteLine("{0} + {1} = {2}", A, B, ans);
+
+                Console.WriteLine("-----------------------------");
+                Console.WriteLine("A + C");
+                ans = A + C;
+                if (A > maxInt - C)
+                    Console.WriteLine("{0} + {1} = Overflow !!!", A, C);
+                else
+                    Console.WriteLine("{0} + {1} = {2}", A, C, ans);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("發生例外狀況 : {0}", e.ToString());
+            }
 
             return 0;
         }
+        #endregion
+
+        #region ex07 - Logic ADD
+        public int Ex07_LogicADD()
+        {
+            int A;
+            int B;
+            Console.WriteLine("-----------------------------");
+            A = 1; B = 2;
+            Console.WriteLine("A = {0}", A);
+            Console.WriteLine("B = {0}", B);
+            Console.WriteLine("{0} + {1} = {2}", A, B, Logic_ADD(A, B));
+            Console.WriteLine("-----------------------------");
+            A = 15; B = 25;
+            Console.WriteLine("A = {0}", A);
+            Console.WriteLine("B = {0}", B);
+            Console.WriteLine("{0} + {1} = {2}", A, B, Logic_ADD(A, B));
+            Console.WriteLine("-----------------------------");
+            A = 31; B = 10;
+            Console.WriteLine("A = {0}", A);
+            Console.WriteLine("B = {0}", B);
+            Console.WriteLine("{0} + {1} = {2}", A, B, Logic_ADD(A, B));
+            Console.WriteLine("-----------------------------");
+            A = 255; B = 111;
+            Console.WriteLine("A = {0}", A);
+            Console.WriteLine("B = {0}", B);
+            Console.WriteLine("{0} + {1} = {2}", A, B, Logic_ADD(A, B));
+
+            return 0;
+        }
+        int Logic_ADD(int a, int b)
+        {
+            int sum = 0;
+            int carry = 0;
+            do
+            {
+                sum = a ^ b;
+                carry = (a & b) << 1;
+                a = sum;
+                b = carry;
+            } while (b != 0);
+
+            return sum;
+        }
+
+
         #endregion
     }
 }
