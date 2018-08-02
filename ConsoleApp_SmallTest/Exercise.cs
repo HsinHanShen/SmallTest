@@ -20,6 +20,7 @@ namespace ConsoleApp_SmallTest
 
     class Exercise
     {
+        #region ex01 - PrintStar
         public int Ex01_PrintStar()
         {
             for (int i = 0; i < 6; i++)
@@ -36,10 +37,12 @@ namespace ConsoleApp_SmallTest
             }
             return 0;
         }
+        #endregion
 
+        #region ex02 - PrintSwap
         public int Ex02_PrintSwap()
         {
-            char[] number = new char [] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+            char[] number = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
             char[] tmp = number;
 
             for (int i = 0; i < number.Length; i++)
@@ -56,11 +59,12 @@ namespace ConsoleApp_SmallTest
 
             return 0;
         }
+        #endregion
 
-
+        #region ex03 - Add Two Numbers
         public int Ex03_AddTwoNumbers()
         {
-             ListNode l1 = new ListNode(0);
+            ListNode l1 = new ListNode(0);
             ListNode l2 = new ListNode(0);
             ListNode l3;
 
@@ -100,7 +104,7 @@ namespace ConsoleApp_SmallTest
             curr2.next = new ListNode(9);
             curr2 = curr2.next;
             curr2.next = new ListNode(9);
-            
+
 
 
 
@@ -119,6 +123,8 @@ namespace ConsoleApp_SmallTest
 
             return 0;
         }
+
+
 
         public ListNode AddTwoNumbers(ListNode l1, ListNode l2)
         {
@@ -153,11 +159,9 @@ namespace ConsoleApp_SmallTest
 
             return ans;
         }
+        #endregion
 
-
-
-
-
+        #region ex04 - Length Of Longest Substring
         public int Ex04_LengthOfLongestSubstring()
         {
             string input = "abcabcdefgabc123456789abc";
@@ -177,8 +181,6 @@ namespace ConsoleApp_SmallTest
 
             return 0;
         }
-
-
         public int LengthOfLongestSubstring(string s)
         {
             /*
@@ -247,9 +249,9 @@ namespace ConsoleApp_SmallTest
             }
             return maxLen;
         }
+        #endregion
 
-
-
+        #region ex05 - Reverse Numbers
         public int Ex05_ReverseNumbers()
         {
             int input = -321;
@@ -311,5 +313,33 @@ namespace ConsoleApp_SmallTest
 
             return 0;
         }
+        #endregion
+
+        #region ex06 - Overflow Detection
+        public int Ex06_OverflowDetection()
+        {
+            try
+            {
+                int A = Int32.MaxValue;
+                int B = 2;
+                int ans = 0;
+
+                ans = (A + B);
+
+                Console.WriteLine("A = {0}", A);
+                Console.WriteLine("B = {0}", B);
+                Console.WriteLine("A + B = {0}", ans);
+            }
+            catch (Exception e)
+            {
+                //Console.WriteLine("發生例外狀況 : {0}", e.ToString());
+                Console.WriteLine("發生例外狀況 : {0}", e.Message);
+            }
+
+
+
+            return 0;
+        }
+        #endregion
     }
 }

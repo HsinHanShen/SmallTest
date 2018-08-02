@@ -52,7 +52,11 @@ namespace ConsoleApp_SmallTest
                         myEx.Ex05_ReverseNumbers();
                         Console.WriteLine("====== Exercise end ======");
                         break;
-
+                    case "6":
+                        Console.WriteLine("<<< Exercise_{0} start >>>", inStr);
+                        myEx.Ex06_OverflowDetection();
+                        Console.WriteLine("====== Exercise end ======");
+                        break;
 
                 }
 
