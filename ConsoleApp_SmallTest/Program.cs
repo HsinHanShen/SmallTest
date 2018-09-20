@@ -20,7 +20,7 @@ namespace ConsoleApp_SmallTest
             {
                 Console.WriteLine("=== Small Test App ===");
                 Console.WriteLine("\t 1) print star.");
-                Console.WriteLine("\t 2) xxx test.");
+                Console.WriteLine("\t 2) swap char[].");
                 Console.WriteLine("\t 3) Add Two Numbers [Linked List].");
                 Console.Write("\t Please select number : ");
 
