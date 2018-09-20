@@ -473,5 +473,78 @@ namespace ConsoleApp_SmallTest
             }
         }
         #endregion
+
+        #region Boble Sort (氣泡排序法)
+        public int Ex09_BobleSort()
+        {
+            int[] number = new int[] { 15, 1, 33, 23, 67, 91, 13, 54, 37, 8 };
+            bool bDone = false;
+            int end = number.Length - 1;
+
+            Console.Write("Input : ");
+            for (int i = 0; i < number.Length; i++)
+            {
+                Console.Write("{0} , ", number[i]);
+            }
+            Console.WriteLine("");
+
+            try
+            {
+                // 自己寫的版本
+                int SwapCn = 0;
+                while (bDone == false)
+                {
+                    bDone = true;
+                    for (int i = 0; i < end; i++)
+                    {
+                        if (number[i] > number[i + 1])
+                        {
+                            // swap
+                            BobleSwap(ref number, i, i + 1);
+                            SwapCn++;
+                            bDone = false;
+                        }
+                    }
+                    end -= 1;
+                }
+                
+                /*// 網路上的版本
+                int SwapCn = 0;
+                for (int i = number.Length - 1; i > 1; i--)
+                {
+                    for (int j = 0; j < i; j++)
+                    {
+                        if (number[j] > number[j+1])
+                        {
+                            BobleSwap(ref number, j, j + 1);
+                            SwapCn++;
+                        }
+                    }
+                }*/
+
+
+
+                Console.Write("Output : ");
+                for (int i = 0; i < number.Length; i++)
+                {
+                    Console.Write("{0} , ", number[i]);
+                }
+                Console.WriteLine("");
+                Console.WriteLine("Total Swap Count = {0}", SwapCn);
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine("Ex09 : {0}", e.Message);
+            }
+
+            return 0;
+        }
+        private void BobleSwap(ref int [] array, int idx1, int idx2)
+        {
+            int tmp = array[idx1];
+            array[idx1] = array[idx2];
+            array[idx2] = tmp;
+        }
+        #endregion
     }
 }
