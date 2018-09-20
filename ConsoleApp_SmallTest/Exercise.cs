@@ -433,8 +433,45 @@ namespace ConsoleApp_SmallTest
 
             return sum;
         }
+        #endregion
 
+        #region ex08 - 九九乘法表
+        public int Ex08_table_9x9()
+        {
+            Console.WriteLine("Recursive Method - 9x9 table");
+            Recursive_table_9x9(1, 1);
+            Console.WriteLine("Loop Method - 9x9 table");
+            Loop_table_9x9(9, 9);
 
+            return 0;
+        }
+        private void Recursive_table_9x9(int x, int y)
+        {
+            if (x <= 9)
+            {
+                if(y <= 9)
+                {
+                    Console.Write("{0}x{1}={2}\t", y, x, y * x);
+                    Recursive_table_9x9(x, y + 1);
+                }
+                else
+                {
+                    Console.Write("\n");
+                    Recursive_table_9x9(x + 1, 1);
+                }
+            }
+        }
+        private void Loop_table_9x9(int x, int y)
+        {
+            for (int i = 1; i <= x; i++)
+            {
+                for (int j = 1; j <= y; j++)
+                {
+                    Console.Write("{0}x{1}={2}\t", j, i, j*i);
+                }
+                Console.Write("\n");
+            }
+        }
         #endregion
     }
 }

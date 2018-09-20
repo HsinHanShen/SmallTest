@@ -26,6 +26,7 @@ namespace ConsoleApp_SmallTest
                 Console.WriteLine("\t 5) Reverse Numbers.");
                 Console.WriteLine("\t 6) Overflow Detection.");
                 Console.WriteLine("\t 7) Logic ADD.");
+                Console.WriteLine("\t 8) 九九乘法表");
                 Console.Write("\t Please select number : ");
 
                 inStr = Console.ReadLine();
@@ -64,6 +65,11 @@ namespace ConsoleApp_SmallTest
                     case "7":
                         Console.WriteLine("<<< Exercise_{0} start >>>", inStr);
                         myEx.Ex07_LogicADD();
+                        Console.WriteLine("====== Exercise end ======");
+                        break;
+                    case "8":
+                        Console.WriteLine("<<< Exercise_{0} start >>>", inStr);
+                        myEx.Ex08_table_9x9();
                         Console.WriteLine("====== Exercise end ======");
                         break;
 
