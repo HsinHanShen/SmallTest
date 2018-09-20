@@ -20,6 +20,7 @@ namespace ConsoleApp_SmallTest
 
     class Exercise
     {
+        #region ex01 - PrintStar
         public int Ex01_PrintStar()
         {
             for (int i = 0; i < 6; i++)
@@ -36,10 +37,12 @@ namespace ConsoleApp_SmallTest
             }
             return 0;
         }
+        #endregion
 
+        #region ex02 - PrintSwap
         public int Ex02_PrintSwap()
         {
-            char[] number = new char [] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+            char[] number = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
             char[] tmp = number;
 
             for (int i = 0; i < number.Length; i++)
@@ -56,11 +59,12 @@ namespace ConsoleApp_SmallTest
 
             return 0;
         }
+        #endregion
 
-
+        #region ex03 - Add Two Numbers
         public int Ex03_AddTwoNumbers()
         {
-             ListNode l1 = new ListNode(0);
+            ListNode l1 = new ListNode(0);
             ListNode l2 = new ListNode(0);
             ListNode l3;
 
@@ -100,7 +104,7 @@ namespace ConsoleApp_SmallTest
             curr2.next = new ListNode(9);
             curr2 = curr2.next;
             curr2.next = new ListNode(9);
-            
+
 
 
 
@@ -119,6 +123,8 @@ namespace ConsoleApp_SmallTest
 
             return 0;
         }
+
+
 
         public ListNode AddTwoNumbers(ListNode l1, ListNode l2)
         {
@@ -153,11 +159,9 @@ namespace ConsoleApp_SmallTest
 
             return ans;
         }
+        #endregion
 
-
-
-
-
+        #region ex04 - Length Of Longest Substring
         public int Ex04_LengthOfLongestSubstring()
         {
             string input = "abcabcdefgabc123456789abc";
@@ -177,8 +181,6 @@ namespace ConsoleApp_SmallTest
 
             return 0;
         }
-
-
         public int LengthOfLongestSubstring(string s)
         {
             /*
@@ -247,9 +249,9 @@ namespace ConsoleApp_SmallTest
             }
             return maxLen;
         }
+        #endregion
 
-
-
+        #region ex05 - Reverse Numbers
         public int Ex05_ReverseNumbers()
         {
             int input = -321;
@@ -311,5 +313,238 @@ namespace ConsoleApp_SmallTest
 
             return 0;
         }
+        #endregion
+
+        #region ex06 - Overflow Detection
+        public int Ex06_OverflowDetection()
+        {
+            Console.WriteLine("< 使用內建函數checked檢查溢位 >");
+            // C# 只走常數運算會透過compiler檢查是否溢位，
+            // 對於變數運算，預設不會檢查!!!
+            // 必須使用"checked()"來進行溢位偵測
+            try
+            {
+                int A = Int32.MaxValue - 2;
+                int B = 2;
+                int C = 3;
+                int ans = 0;
+
+                Console.WriteLine("A = {0}", A);
+                Console.WriteLine("B = {0}", B);
+                Console.WriteLine("C = {0}", C);
+                Console.WriteLine("-----------------------------");
+
+                Console.WriteLine("A + B");
+                // ans = A + B;         // 不會發出例外
+                ans = checked(A + B);   // 會檢查例外(溢位)
+                Console.WriteLine("{0} + {1} = {2}", A, B, ans);
+
+                Console.WriteLine("-----------------------------");
+                Console.WriteLine("A + C");
+                // ans = A + C;         // 不會發出例外
+                ans = checked(A + C);   // 會檢查例外(溢位)
+                Console.WriteLine("{0} + {1} = {2}", A, C, ans);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("發生例外狀況 : {0}", e.ToString());
+            }
+            Console.WriteLine("");
+            Console.WriteLine("< 手動檢查 >");
+            // 手動檢查
+            try
+            {
+                int maxInt = 0x7FFFFFFF;
+                int minInt = maxInt + 1;
+
+                
+                int A = 0x7FFFFFF0;
+                int B = 0xF;
+                int C = 0x10;
+                int ans = 0;
+                Console.WriteLine("A = {0}", A);
+                Console.WriteLine("B = {0}", B);
+                Console.WriteLine("C = {0}", C);
+                Console.WriteLine("-----------------------------");
+
+                Console.WriteLine("A + B");
+                ans = A + B;
+                if (A > maxInt - B)
+                    Console.WriteLine("{0} + {1} = Overflow !!!", A , B);
+                else
+                    Console.WriteLine("{0} + {1} = {2}", A, B, ans);
+
+                Console.WriteLine("-----------------------------");
+                Console.WriteLine("A + C");
+                ans = A + C;
+                if (A > maxInt - C)
+                    Console.WriteLine("{0} + {1} = Overflow !!!", A, C);
+                else
+                    Console.WriteLine("{0} + {1} = {2}", A, C, ans);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("發生例外狀況 : {0}", e.ToString());
+            }
+
+            return 0;
+        }
+        #endregion
+
+        #region ex07 - Logic ADD
+        public int Ex07_LogicADD()
+        {
+            int A;
+            int B;
+            Console.WriteLine("-----------------------------");
+            A = 1; B = 2;
+            Console.WriteLine("A = {0}", A);
+            Console.WriteLine("B = {0}", B);
+            Console.WriteLine("{0} + {1} = {2}", A, B, Logic_ADD(A, B));
+            Console.WriteLine("-----------------------------");
+            A = 15; B = 25;
+            Console.WriteLine("A = {0}", A);
+            Console.WriteLine("B = {0}", B);
+            Console.WriteLine("{0} + {1} = {2}", A, B, Logic_ADD(A, B));
+            Console.WriteLine("-----------------------------");
+            A = 31; B = 10;
+            Console.WriteLine("A = {0}", A);
+            Console.WriteLine("B = {0}", B);
+            Console.WriteLine("{0} + {1} = {2}", A, B, Logic_ADD(A, B));
+            Console.WriteLine("-----------------------------");
+            A = 255; B = 111;
+            Console.WriteLine("A = {0}", A);
+            Console.WriteLine("B = {0}", B);
+            Console.WriteLine("{0} + {1} = {2}", A, B, Logic_ADD(A, B));
+
+            return 0;
+        }
+        int Logic_ADD(int a, int b)
+        {
+            int sum = 0;
+            int carry = 0;
+            do
+            {
+                sum = a ^ b;
+                carry = (a & b) << 1;
+                a = sum;
+                b = carry;
+            } while (b != 0);
+
+            return sum;
+        }
+        #endregion
+
+        #region ex08 - 九九乘法表
+        public int Ex08_table_9x9()
+        {
+            Console.WriteLine("Recursive Method - 9x9 table");
+            Recursive_table_9x9(1, 1);
+            Console.WriteLine("Loop Method - 9x9 table");
+            Loop_table_9x9(9, 9);
+
+            return 0;
+        }
+        private void Recursive_table_9x9(int x, int y)
+        {
+            if (x <= 9)
+            {
+                if(y <= 9)
+                {
+                    Console.Write("{0}x{1}={2}\t", y, x, y * x);
+                    Recursive_table_9x9(x, y + 1);
+                }
+                else
+                {
+                    Console.Write("\n");
+                    Recursive_table_9x9(x + 1, 1);
+                }
+            }
+        }
+        private void Loop_table_9x9(int x, int y)
+        {
+            for (int i = 1; i <= x; i++)
+            {
+                for (int j = 1; j <= y; j++)
+                {
+                    Console.Write("{0}x{1}={2}\t", j, i, j*i);
+                }
+                Console.Write("\n");
+            }
+        }
+        #endregion
+
+        #region Bubble Sort (氣泡排序法)
+        public int Ex09_BubbleSort()
+        {
+            int[] number = new int[] { 15, 1, 33, 23, 67, 91, 13, 54, 37, 8 };
+            bool bDone = false;
+            int end = number.Length - 1;
+
+            Console.Write("Input : ");
+            for (int i = 0; i < number.Length; i++)
+            {
+                Console.Write("{0} , ", number[i]);
+            }
+            Console.WriteLine("");
+
+            try
+            {
+                // 自己寫的版本
+                int SwapCn = 0;
+                while (bDone == false)
+                {
+                    bDone = true;
+                    for (int i = 0; i < end; i++)
+                    {
+                        if (number[i] > number[i + 1])
+                        {
+                            // swap
+                            BubbleSwap(ref number, i, i + 1);
+                            SwapCn++;
+                            bDone = false;
+                        }
+                    }
+                    end -= 1;
+                }
+
+                /*// 網路上的版本
+                int SwapCn = 0;
+                for (int i = number.Length - 1; i > 1; i--)
+                {
+                    for (int j = 0; j < i; j++)
+                    {
+                        if (number[j] > number[j+1])
+                        {
+                            BubbleSwap(ref number, j, j + 1);
+                            SwapCn++;
+                        }
+                    }
+                }*/
+
+
+
+                Console.Write("Output : ");
+                for (int i = 0; i < number.Length; i++)
+                {
+                    Console.Write("{0} , ", number[i]);
+                }
+                Console.WriteLine("");
+                Console.WriteLine("Total Swap Count = {0}", SwapCn);
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine("Ex09 : {0}", e.Message);
+            }
+
+            return 0;
+        }
+        private void BubbleSwap(ref int [] array, int idx1, int idx2)
+        {
+            int tmp = array[idx1];
+            array[idx1] = array[idx2];
+            array[idx2] = tmp;
+        }
+        #endregion
     }
 }

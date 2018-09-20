@@ -22,6 +22,12 @@ namespace ConsoleApp_SmallTest
                 Console.WriteLine("\t 1) print star.");
                 Console.WriteLine("\t 2) swap char[].");
                 Console.WriteLine("\t 3) Add Two Numbers [Linked List].");
+                Console.WriteLine("\t 4) Length Of Longest Substring.");
+                Console.WriteLine("\t 5) Reverse Numbers.");
+                Console.WriteLine("\t 6) Overflow Detection.");
+                Console.WriteLine("\t 7) Logic ADD.");
+                Console.WriteLine("\t 8) 九九乘法表");
+                Console.WriteLine("\t 9) BubbleSort(氣泡排序法)");
                 Console.Write("\t Please select number : ");
 
                 inStr = Console.ReadLine();
@@ -52,13 +58,29 @@ namespace ConsoleApp_SmallTest
                         myEx.Ex05_ReverseNumbers();
                         Console.WriteLine("====== Exercise end ======");
                         break;
-
+                    case "6":
+                        Console.WriteLine("<<< Exercise_{0} start >>>", inStr);
+                        myEx.Ex06_OverflowDetection();
+                        Console.WriteLine("====== Exercise end ======");
+                        break;
+                    case "7":
+                        Console.WriteLine("<<< Exercise_{0} start >>>", inStr);
+                        myEx.Ex07_LogicADD();
+                        Console.WriteLine("====== Exercise end ======");
+                        break;
+                    case "8":
+                        Console.WriteLine("<<< Exercise_{0} start >>>", inStr);
+                        myEx.Ex08_table_9x9();
+                        Console.WriteLine("====== Exercise end ======");
+                        break;
+                    case "9":
+                        Console.WriteLine("<<< Exercise_{0} start >>>", inStr);
+                        myEx.Ex09_BobleSort();
+                        Console.WriteLine("====== Exercise end ======");
+                        break;
 
                 }
-
-
                 Console.Write("Press 'E' to exit: ");
-
 
                 inStr = Console.ReadLine();
                 isExit = inStr.Equals("E");
@@ -68,15 +90,6 @@ namespace ConsoleApp_SmallTest
                     Console.WriteLine("\nRepert App ...");
 
             } while (isExit == false);           
-
-
-
-
-
-
-
-
-
         }
     }
 }
